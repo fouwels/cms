@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+
+services:
+ activemq:
+    image: alfresco/alfresco-activemq:5.16.1
+    container_name: activemq
+    networks:
+      - activemq
+    volumes:
+      - activemq-conf:/opt/activemq/conf
+      - activemq-data:/opt/activemq/data
+      - activemq-log:/var/log/activemq
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: ${MQ_MEMLIMIT}
+networks:
+  activemq:
+  
+volumes:
+  activemq-conf:
+  activemq-data:
+  activemq-log:

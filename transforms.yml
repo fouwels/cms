@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+
+services:
+  transforms:
+    restart: unless-stopped
+    image: alfresco/alfresco-transform-core-aio:2.5.3
+    container_name: transforms
+    environment:
+      JAVA_OPTS: "-Xmx${AIO_XM}"
+    networks:
+      - transforms
+    deploy:
+      resources:
+        limits:
+          memory: ${AIO_MEMLIMIT}
+
+networks:
+  transforms:
