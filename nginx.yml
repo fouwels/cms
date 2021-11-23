@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solutions
+#
+# SPDX-License-Identifier: MIT
+
+services:
+  nginx:
+    image: ghcr.io/fouwels/nginx:1.21.3-r1
+    container_name: nginx
+    volumes:
+      - ./config/nginx:/config
+      - certbot_www:/var/www/certbot:ro
+      - certbot_keys:/keys
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      nginx:
+      alfresco:
+      share:
+      solr6:
+    restart: unless-stopped
+    entrypoint: ["/config/entrypoint.sh"]
+    command:
+      [
+        "/usr/local/nginx/sbin/nginx",
+        "-g",
+        "daemon off;",
+        "-c",
+        "/config/nginx.conf",
+      ]
+    deploy:
+      resources:
+        limits:
+          memory: ${NGINX_MEMLIMIT}
+
+networks:
+  nginx:

@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solutions
+#
+# SPDX-License-Identifier: MIT
+
+services:
+  alfresco:
+    image: alfresco/alfresco-content-repository-community:7.0.0
+    container_name: alfresco
+    environment:
+      JAVA_OPTS: "-Xmx${ALFRESCO_XM}"
+      # add settings for default ACS keystore to allow ACS to launch
+      # ACS native key functionality is not used, but this is still required to start
+      # this must be passed via TOOL_OPTIONS, setting in alfresco-global.properties does not work.
+      # artifact introducted in ACS 7.0 -kf.
+      JAVA_TOOL_OPTIONS: "
+        -Dencryption.keystore.type=JCEKS
+        -Dencryption.cipherAlgorithm=DESede/CBC/PKCS5Padding
+        -Dencryption.keyAlgorithm=DESede
+        -Dencryption.keystore.location=/usr/local/tomcat/shared/classes/alfresco/extension/keystore/keystore
+        -Dmetadata-keystore.password=mp6yc0UD9e
+        -Dmetadata-keystore.aliases=metadata
+        -Dmetadata-keystore.metadata.password=oKIWzVdEdA
+        -Dmetadata-keystore.metadata.algorithm=DESede
+        "
+    volumes:
+      - alf-repo-data:/usr/local/tomcat/alf_data
+    configs:
+      - source: alfresco
+        target: /usr/local/tomcat/shared/classes/alfresco-global.properties
+    networks:
+      - alfresco
+      - activemq
+      - solr6
+      - postgres
+      - transforms
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: ${ALFRESCO_MEMLIMIT}
+
+configs:
+  alfresco:
+    file: ./config/alfresco/alfresco-global.properties
+
+volumes:
+  alf-repo-data:
+
+networks:
+  alfresco:

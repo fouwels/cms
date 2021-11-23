@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solutions
+#
+# SPDX-License-Identifier: MIT
+
+services:
+  postgres:
+    image: postgres:14.1-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: alfresco
+      POSTGRES_PASSWORD: alfresco
+      POSTGRES_DB: alfresco
+    command: "
+      postgres
+      -c log_min_messages=WARNING
+      -c log_directory=/dev/stdout
+      -c max_connections=250"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: ${POSTGRES_MEMLIMIT}
+
+volumes:
+  postgres-data:
+
+networks:
+  postgres:

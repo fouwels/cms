@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2021 Belcan Advanced Solutions
+#
+# SPDX-License-Identifier: MIT
+
+services:
+  share:
+    container_name: share
+    image: alfresco/alfresco-share:7.0.0
+    environment:
+      JAVA_OPTS: "-Xmx${SHARE_XM}"
+      REPO_HOST: alfresco
+      REPO_PORT: 8080
+      CSRF_FILTER_REFERER: https://cms.fouwels.com/.*
+      CSRF_FILTER_ORIGIN: https://cms.fouwels.com
+    configs:
+      - source: share
+        target: /config/entrypoint.sh
+      - source: share_logo
+        target: /usr/local/tomcat/webapps/share/themes/default/images/alfresco.svg
+    networks:
+      - share
+      - alfresco
+    restart: unless-stopped
+    entrypoint: ["/config/entrypoint.sh"]
+    command: ["catalina.sh", "run"]
+    deploy:
+      resources:
+        limits:
+          memory: ${SHARE_MEMLIMIT}
+
+configs:
+  share:
+    file: ./config/share/entrypoint.sh
+  share_logo:
+    file: ./config/share/fouwels.jpeg
+networks:
+  share:
