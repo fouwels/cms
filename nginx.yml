@@ -4,7 +4,7 @@
 
 services:
   nginx:
-    image: ghcr.io/fouwels/nginx:1.21.3-r1
+    image: ghcr.io/fouwels/nginx:1.21.4-r1
     container_name: nginx
     volumes:
       - ./config/nginx:/config
