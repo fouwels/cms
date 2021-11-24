@@ -5,7 +5,7 @@
 services:
   transforms:
     restart: unless-stopped
-    image: alfresco/alfresco-transform-core-aio:2.5.3
+    image: alfresco/alfresco-transform-core-aio:2.5.4
     container_name: transforms
     environment:
       JAVA_OPTS: "-Xmx${AIO_XM}"

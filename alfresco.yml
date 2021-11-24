@@ -4,7 +4,7 @@
 
 services:
   alfresco:
-    image: alfresco/alfresco-content-repository-community:7.0.0
+    image: alfresco/alfresco-content-repository-community:7.1.0.1
     container_name: alfresco
     environment:
       JAVA_OPTS: "-Xmx${ALFRESCO_XM}"
@@ -23,7 +23,7 @@ services:
         -Dmetadata-keystore.metadata.algorithm=DESede
         "
     volumes:
-      - alf-repo-data:/usr/local/tomcat/alf_data
+      - alfresco-data:/usr/local/tomcat/alf_data
     configs:
       - source: alfresco
         target: /usr/local/tomcat/shared/classes/alfresco-global.properties
@@ -44,7 +44,7 @@ configs:
     file: ./config/alfresco/alfresco-global.properties
 
 volumes:
-  alf-repo-data:
+  alfresco-data:
 
 networks:
   alfresco:
