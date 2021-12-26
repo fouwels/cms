@@ -16,7 +16,7 @@ services:
       - source: share
         target: /config/entrypoint.sh
       - source: share_logo
-        target: /usr/local/tomcat/webapps/share/themes/default/images/alfresco.svg
+        target: /usr/local/tomcat/webapps/share/themes/lightTheme/images/alfresco.svg
     networks:
       - share
       - alfresco
@@ -32,6 +32,6 @@ configs:
   share:
     file: ./config/share/entrypoint.sh
   share_logo:
-    file: ./config/share/fouwels.jpeg
+    file: ./config/share/logo.svg
 networks:
   share:

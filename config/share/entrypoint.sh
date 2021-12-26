@@ -45,7 +45,7 @@ sed -i 's/\(<password-min-length>\)3\(<\/password-min-length\)/\114\2/' ${SHARE_
 echo "patched ${SHARE_CONFIG_CUSTOM}"
 
 echo "patching styles"
-sed -i 's/#f8982b/#05badc/g' /usr/local/tomcat/webapps/share/components/guest/login.css
+sed -i 's/#f8982b/#4B0096/g' /usr/local/tomcat/webapps/share/components/guest/login.css
 
 echo "dropping to cmd"
 
