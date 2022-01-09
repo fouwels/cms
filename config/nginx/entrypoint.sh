@@ -7,15 +7,16 @@ set -e
 
 echo "| entering entrypoint"
 
-PATH=/keys
+KEY_PATH=/keys
 
 echo "| checking for existing keys"
-if [ ! -f $PATH/privkey.pem ]; then
-	echo "| $PATH/privkey.pem not found, generating dummy certificates"
-	/usr/bin/openssl req -x509 -nodes -newkey rsa:3072 -days 1 -keyout "$PATH/privkey.pem" -out "$PATH/fullchain.pem" -subj '/CN=dummy.local'
+if [ ! -f $KEY_PATH/privkey.pem ]; then
+	echo "| $KEY_PATH/privkey.pem not found, generating dummy certificates"
+	/usr/bin/openssl req -x509 -nodes -newkey rsa:3072 -days 1 -keyout "$KEY_PATH/privkey.pem" -out "$KEY_PATH/fullchain.pem" -subj '/CN=dummy.local'
 else
 	echo "| keys found, not generating dummy certificates"
 fi
 
 echo "| exiting entrypoint, handing off to cmd"
+
 "$@"

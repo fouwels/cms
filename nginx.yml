@@ -30,7 +30,6 @@ services:
         target: /config/conf.d/cms.http.conf
       - source: default
         target: /config/conf.d/default.conf
-
     networks:
       nginx:
       alfresco:
