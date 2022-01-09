@@ -8,10 +8,13 @@ services:
     container_name: alfresco
     environment:
       JAVA_OPTS: "-Xmx${ALFRESCO_XM}"
-      # add settings for default ACS keystore to allow ACS to launch
-      # ACS native key functionality is not used, but this is still required to start
-      # this must be passed via TOOL_OPTIONS, setting in alfresco-global.properties does not work.
-      # artifact introducted in ACS 7.0 -kf.
+      # Configure keys for the ACR keystore,
+      # Native keystores are not used, however, this is still required to allow ACR to init
+      # Configuration Must be passed via TOOL_OPTIONS, setting in alfresco-global.properties does not work.
+      # Specified values are set to match the existing keystore, these are not user selected...
+      # Patches/Explanation welcome,
+      # Artifact introducted in ACS 7.0
+      # -kf.
       JAVA_TOOL_OPTIONS: "
         -Dencryption.keystore.type=JCEKS
         -Dencryption.cipherAlgorithm=DESede/CBC/PKCS5Padding

@@ -19,7 +19,7 @@ down:
 logs:
 	$(COMPOSE) $(STACKFILE) logs -f
 
-# Utility
+# Utility - Testing
 certbot-request:
 	docker exec -it certbot certbot certonly --keep-until-expiring --webroot --webroot-path /var/www/certbot --agree-tos --non-interactive --cert-name master \
 		-d cms.fouwels.com \

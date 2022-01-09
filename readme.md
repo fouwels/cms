@@ -4,15 +4,19 @@ SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 SPDX-License-Identifier: MIT
 -->
 
-Production [compose/spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) deployment for the an alfresco CMS system.
+# CMS
+
+Production [compose/spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) deployment for an Alfresco CE system.
+
+Deployable on ECS, ACI, or dockerd via [compose/cli](https://github.com/docker/compose) (go)
+
+Stacks up the Alfresco CE CMS system with postgres, certbot, Apache Solr, and the ACS 7 T-Engines.
+
+Overrides a number of default alfresco entrypoints/configurations, for various... reasons. See the specific file descriptors.
+
+Implements:
+- https://cms.fouwels.com
+- https://ecms.lagoni.co.uk
 
 
-Deployable with V2 of the docker [compose cli](https://github.com/docker/compose-cli)
-
-Based on the alfresco cms, postgres, nginx, and lets-encrypt/acme for certificate management.
-
-Overrides a number of default alfresco entrypoints/configurations, for various reasons.
-
-Used for cms.fouwels.com
-
--Professional YAML engineering
+*Professional YAML engineering*
