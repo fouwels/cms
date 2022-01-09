@@ -7,7 +7,6 @@ services:
     image: ghcr.io/fouwels/nginx:1.21.5-r0
     container_name: nginx
     volumes:
-      - ./config/nginx:/config
       - certbot_www:/var/www/certbot:ro
       - certbot_keys:/keys
     ports:
@@ -23,7 +22,7 @@ services:
       - source: gzip
         target: /config/gzip.conf
       - source: headers
-        target: /config/conf.d/acme.http.conf
+        target: /config/headers.conf
       - source: acme_http
         target: /config/conf.d/acme.http.conf
       - source: cms_http
