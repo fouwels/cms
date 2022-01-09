@@ -4,7 +4,7 @@
 ---
 services:
   nginx:
-    image: ghcr.io/fouwels/nginx:1.21.4-r1
+    image: ghcr.io/fouwels/nginx:1.21.5-r0
     container_name: nginx
     volumes:
       - ./config/nginx:/config
@@ -13,25 +13,54 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    configs:
+      - source: entrypoint
+        target: /entrypoint.sh
+      - source: nginx
+        target: /config/nginx.conf
+      - source: ssl
+        target: /config/ssl.conf
+      - source: gzip
+        target: /config/gzip.conf
+      - source: headers
+        target: /config/conf.d/acme.http.conf
+      - source: acme_http
+        target: /config/conf.d/acme.http.conf
+      - source: cms_http
+        target: /config/conf.d/cms.http.conf
+      - source: default
+        target: /config/conf.d/default.conf
+
     networks:
       nginx:
       alfresco:
       share:
       solr6:
     restart: unless-stopped
-    entrypoint: ["/config/entrypoint.sh"]
-    command:
-      [
-        "/usr/local/nginx/sbin/nginx",
-        "-g",
-        "daemon off;",
-        "-c",
-        "/config/nginx.conf",
-      ]
+    entrypoint: ["/entrypoint.sh"]
+    command: ["nginx", "-g", "daemon off;", "-c", "/config/nginx.conf"]
     deploy:
       resources:
         limits:
           memory: ${NGINX_MEMLIMIT}
+
+configs:
+  entrypoint:
+    file: ./config/nginx/entrypoint.sh
+  nginx:
+    file: ./config/nginx/nginx.conf
+  ssl:
+    file: ./config/nginx/ssl.conf
+  gzip:
+    file: ./config/nginx/gzip.conf
+  headers:
+    file: ./config/nginx/headers.conf
+  acme_http:
+    file: ./config/nginx/conf.d/acme.http.conf
+  cms_http:
+    file: ./config/nginx/conf.d/cms.http.conf
+  default:
+    file: ./config/nginx/conf.d/default.conf
 
 networks:
   nginx:
