@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
-
+---
 services:
   nginx:
     image: ghcr.io/fouwels/nginx:1.21.4-r1

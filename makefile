@@ -3,21 +3,21 @@
 # SPDX-License-Identifier: MIT
 
 COMPOSE=docker compose
-STACKFILE= -f activemq.yml -f alfresco.yml -f certbot.yml -f nginx.yml -f postgres.yml -f share.yml -f solr6.yml -f transforms.yml
+STACK= -f activemq.yml -f alfresco.yml -f certbot.yml -f nginx.yml -f postgres.yml -f share.yml -f solr6.yml -f transforms.yml
 
 .PHONY: pull, up, up-d, down, logs, certbot-request, certbot-renew, certbot-nginx
 
 # Docker
 pull:
-	$(COMPOSE) $(STACKFILE) pull
+	$(COMPOSE) $(STACK) pull
 up: 
-	$(COMPOSE) $(STACKFILE) up
+	$(COMPOSE) $(STACK) up
 up-d: 
-	$(COMPOSE) $(STACKFILE) up -d
+	$(COMPOSE) $(STACK) up -d
 down:
-	$(COMPOSE) $(STACKFILE) down
+	$(COMPOSE) $(STACK) down
 logs:
-	$(COMPOSE) $(STACKFILE) logs -f
+	$(COMPOSE) $(STACK) logs -f
 
 # Utility - Testing
 certbot-request:

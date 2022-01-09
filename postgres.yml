@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
-
+---
 services:
   postgres:
-    image: postgres:14.1-alpine
+    image: postgres:14.1-alpine3.15
     container_name: postgres
     environment:
       POSTGRES_USER: alfresco

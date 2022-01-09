@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
-
+---
 services:
   solr6:
     container_name: solr6

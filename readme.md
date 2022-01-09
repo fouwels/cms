@@ -3,7 +3,6 @@ SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 
 SPDX-License-Identifier: MIT
 -->
-
 # CMS
 
 Production [compose/spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) deployment for an Alfresco CE system.

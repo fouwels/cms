@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
 #
 # SPDX-License-Identifier: MIT
-
+---
 services:
   alfresco:
     image: alfresco/alfresco-content-repository-community:7.1.0.1
