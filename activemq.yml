@@ -19,7 +19,7 @@ services:
           memory: ${MQ_MEMLIMIT}
 networks:
   activemq:
-  
+
 volumes:
   activemq-conf:
   activemq-data:

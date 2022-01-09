@@ -21,7 +21,6 @@ services:
         limits:
           memory: ${CERTBOT_MEMLIMIT}
 
-
 volumes:
   certbot_data:
   certbot_www:
