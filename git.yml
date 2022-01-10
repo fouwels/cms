@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+---
+services:
+  git:
+    image: gitea/gitea:1.15.9
+    container_name: git
+    volumes:
+      - git_data:/data
+    configs:
+      - source: config
+        target: /etc/gitea/conf/app.ini
+    networks:
+      git:
+      git-postgres:
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: ${GIT_MEMLIMIT}
+
+configs:
+  config:
+    file: ./config/git/app.ini
+
+volumes:
+  git_data:
+
+networks:
+  git:

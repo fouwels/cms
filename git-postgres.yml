@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2021 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+---
+services:
+  git-postgres:
+    image: postgres:14.1-alpine3.15
+    container_name: git-postgres
+    environment:
+      POSTGRES_USER: git
+      POSTGRES_PASSWORD: git
+      POSTGRES_DB: git
+    volumes:
+      - git-postgres_data:/var/lib/postgresql/data
+    configs:
+      - source: config
+        target: /...
+    networks:
+      git-postgres:
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: ${GIT_POSTGRES_MEMLIMIT}
+
+configs:
+  config:
+    file: ./config/git/conf.x
+
+volumes:
+  git-postgres_data:
+
+networks:
+  git-postgres:

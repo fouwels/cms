@@ -27,6 +27,10 @@ services:
         target: /config/conf.d/acme.http.conf
       - source: cms_http
         target: /config/conf.d/cms.http.conf
+      - source: git_http
+        target: /config/conf.d/git.http.conf
+      - source: git_stream
+        target: /config/conf.d/git.stream.conf
       - source: default
         target: /config/conf.d/default.conf
     networks:
@@ -34,6 +38,7 @@ services:
       alfresco:
       share:
       solr6:
+      git:
     restart: unless-stopped
     entrypoint: ["/entrypoint.sh"]
     command: ["nginx", "-g", "daemon off;", "-c", "/config/nginx.conf"]
@@ -57,6 +62,10 @@ configs:
     file: ./config/nginx/conf.d/acme.http.conf
   cms_http:
     file: ./config/nginx/conf.d/cms.http.conf
+  git_http:
+    file: ./config/nginx/conf.d/git.http.conf
+  git_stream:
+    file: ./config/nginx/conf.d/git.stream.conf
   default:
     file: ./config/nginx/conf.d/default.conf
 
