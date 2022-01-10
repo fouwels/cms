@@ -8,9 +8,10 @@ services:
     container_name: git
     volumes:
       - git_data:/data
+      - git_app_data:/app/gitea/data
     configs:
       - source: config
-        target: /etc/gitea/conf/app.ini
+        target: /data/gitea/conf/app.ini
     networks:
       git:
       git-postgres:
@@ -26,6 +27,7 @@ configs:
 
 volumes:
   git_data:
+  git_app_data:
 
 networks:
   git:

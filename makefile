@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 COMPOSE=docker compose
-STACK= -f activemq.yml -f alfresco.yml -f certbot.yml -f nginx.yml -f postgres.yml -f share.yml -f solr6.yml -f transforms.yml
+STACK= -f activemq.yml -f alfresco.yml -f certbot.yml -f nginx.yml -f postgres.yml -f share.yml -f solr6.yml -f transforms.yml -f git.yml -f git-postgres.yml
 
 .PHONY: pull, up, up-d, down, logs, certbot-request, certbot-renew, certbot-nginx
 

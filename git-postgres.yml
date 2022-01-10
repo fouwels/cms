@@ -12,9 +12,6 @@ services:
       POSTGRES_DB: git
     volumes:
       - git-postgres_data:/var/lib/postgresql/data
-    configs:
-      - source: config
-        target: /...
     networks:
       git-postgres:
     restart: unless-stopped
@@ -22,10 +19,6 @@ services:
       resources:
         limits:
           memory: ${GIT_POSTGRES_MEMLIMIT}
-
-configs:
-  config:
-    file: ./config/git/conf.x
 
 volumes:
   git-postgres_data:
