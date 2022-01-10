@@ -22,7 +22,7 @@ logs:
 # Utility - Testing
 certbot-request:
 	docker exec -it certbot certbot certonly --keep-until-expiring --webroot --webroot-path /var/www/certbot --agree-tos --non-interactive --cert-name master \
-		-d cms.fouwels.com \
+		-d cms.fouwels.com -d git.fouwels.com \
 		--rsa-key-size 3072 \
 		--email kaelan.thijs@fouwels.com \
 		-v \
