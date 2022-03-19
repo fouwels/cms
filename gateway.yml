@@ -17,6 +17,7 @@ services:
       gateway:
       alfresco:
       share:
+      git:
     deploy:
       resources:
         limits:
