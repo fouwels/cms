@@ -1,0 +1,93 @@
+# SPDX-FileCopyrightText: 2022 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+{
+	http_port 80
+	https_port 443
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	# acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	admin off
+}
+
+cms.fouwels.com {
+	header {
+		Expect-CT "max-age=86400, enforce"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Referrer-Policy "strict-origin"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; upgrade-insecure-requests"
+
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
+	}
+
+	encode {
+		gzip 6
+	}
+
+	log {
+		output stdout
+		format filter {
+			fields {
+				request>headers delete
+				request>tls delete
+				common_log delete
+				resp_headers delete
+			}
+			wrap json
+		}
+		level INFO
+	}
+
+	redir / /share/page
+
+	reverse_proxy /share/* share:8080 # Alfresco web
+	reverse_proxy /alfresco/api/* alfresco:8080 # Alfresco core
+	reverse_proxy /alfresco/service/api/server alfresco:8080 # Alfresco service document
+
+
+	tls kaelan@fouwels.com {
+		protocols tls1.3 tls1.3
+		curves x25519
+		key_type rsa2048
+	}
+}
+
+git.fouwels.com {
+	header {
+		Expect-CT "max-age=86400, enforce"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Referrer-Policy "strict-origin"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://secure.gravatar.com; upgrade-insecure-requests"
+
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
+	}
+
+	encode {
+		gzip 6
+	}
+
+	log {
+		output stdout
+		format filter {
+			fields {
+				request>headers delete
+				request>tls delete
+				common_log delete
+				resp_headers delete
+			}
+			wrap json
+		}
+		level INFO
+	}
+
+	reverse_proxy /* git:8080
+
+	tls kaelan@fouwels.com {
+		protocols tls1.3 tls1.3
+		curves x25519
+		key_type rsa2048
+	}
+}
