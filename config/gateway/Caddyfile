@@ -21,6 +21,21 @@ cms.fouwels.com {
 		X-XSS-Protection "1; mode=block"
 	}
 
+	log {
+		output stdout
+		format filter {
+			fields {
+				request>headers delete
+				request>tls delete
+				common_log delete
+				resp_headers delete
+			}
+			wrap json
+		}
+		level INFO
+	}
+
+
 	redir / /share/page
 
 	reverse_proxy /share/* share:8080 # Alfresco web
@@ -45,6 +60,20 @@ git.fouwels.com {
 		X-Frame-Options "SAMEORIGIN"
 		X-Content-Type-Options "nosniff"
 		X-XSS-Protection "1; mode=block"
+	}
+
+	log {
+		output stdout
+		format filter {
+			fields {
+				request>headers delete
+				request>tls delete
+				common_log delete
+				resp_headers delete
+			}
+			wrap json
+		}
+		level INFO
 	}
 
 	reverse_proxy /* git:8080
