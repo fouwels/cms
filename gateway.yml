@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2022 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+---
+services:
+  gateway:
+    image: caddy:2.4.6-alpine
+    restart: unless-stopped
+    ports:
+      - 443:443
+    volumes:
+      - gateway_data:/data
+    configs:
+      - source: gateway_config
+        target: /etc/caddy/Caddyfile
+    networks:
+      gateway:
+      alfresco:
+      share:
+    deploy:
+      resources:
+        limits:
+          memory: 0.5gb
+
+volumes:
+  gateway_data:
+
+configs:
+  gateway_config:
+    file: ./config/gateway/Caddyfile
+
+networks:
+  gateway:
