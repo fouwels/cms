@@ -15,10 +15,14 @@ cms.fouwels.com {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
 		Referrer-Policy "strict-origin"
 		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; upgrade-insecure-requests"
-		
+
 		X-Frame-Options "SAMEORIGIN"
 		X-Content-Type-Options "nosniff"
 		X-XSS-Protection "1; mode=block"
+	}
+
+	encode {
+		gzip 6
 	}
 
 	log {
@@ -34,7 +38,6 @@ cms.fouwels.com {
 		}
 		level INFO
 	}
-
 
 	redir / /share/page
 
@@ -60,6 +63,10 @@ git.fouwels.com {
 		X-Frame-Options "SAMEORIGIN"
 		X-Content-Type-Options "nosniff"
 		X-XSS-Protection "1; mode=block"
+	}
+
+	encode {
+		gzip 6
 	}
 
 	log {
