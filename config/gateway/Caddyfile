@@ -4,22 +4,29 @@
 {
 	http_port 80
 	https_port 443
-	# acme_ca https://acme-v02.api.letsencrypt.org/directory
-	acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	# acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
 	admin off
 }
 
 cms.fouwels.com {
-	redir / /share/page
-
-	route {
-		reverse_proxy /share/* share:8080 # Alfresco web
-		reverse_proxy /alfresco/api/* alfresco:8080 # Alfresco core
-		reverse_proxy /alfresco/service/api/server alfresco:8080 # Alfresco service document
+	header {
+		Expect-CT "max-age=86400, enforce"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Referrer-Policy "strict-origin"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; upgrade-insecure-requests"
+		
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
 	}
 
-	header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:;" always;
-	header Referrer-Policy "strict-origin"
+	redir / /share/page
+
+	reverse_proxy /share/* share:8080 # Alfresco web
+	reverse_proxy /alfresco/api/* alfresco:8080 # Alfresco core
+	reverse_proxy /alfresco/service/api/server alfresco:8080 # Alfresco service document
+
 
 	tls kaelan@fouwels.com {
 		protocols tls1.3 tls1.3
@@ -29,12 +36,18 @@ cms.fouwels.com {
 }
 
 git.fouwels.com {
-	route {
-		reverse_proxy /* git:8080
+	header {
+		Expect-CT "max-age=86400, enforce"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Referrer-Policy "strict-origin"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://secure.gravatar.com; upgrade-insecure-requests"
+
+		X-Frame-Options "SAMEORIGIN"
+		X-Content-Type-Options "nosniff"
+		X-XSS-Protection "1; mode=block"
 	}
 
-	header Content-Security-Policy "upgrade-insecure-requests; default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self' 'unsafe-inline'; img-src 'self' data: https://secure.gravatar.com" always;
-	header Referrer-Policy "strict-origin" always;
+	reverse_proxy /* git:8080
 
 	tls kaelan@fouwels.com {
 		protocols tls1.3 tls1.3
