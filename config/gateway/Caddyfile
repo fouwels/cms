@@ -9,10 +9,17 @@
 	admin off
 }
 
+fouwels.com {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	respond / "HSTS preload hook" 200
+}
+
 cms.fouwels.com {
 	header {
 		Expect-CT "max-age=86400, enforce"
-		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		Referrer-Policy "strict-origin"
 		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; upgrade-insecure-requests"
 
@@ -56,7 +63,7 @@ cms.fouwels.com {
 git.fouwels.com {
 	header {
 		Expect-CT "max-age=86400, enforce"
-		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
 		Referrer-Policy "strict-origin"
 		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://secure.gravatar.com; upgrade-insecure-requests"
 
