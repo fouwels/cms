@@ -48,12 +48,13 @@ cms.fouwels.com {
 		level INFO
 	}
 
-	redir / /share/page
-
-	reverse_proxy /share/* share:8080 # Alfresco web
-	reverse_proxy /alfresco/api/* alfresco:8080 # Alfresco core
-	reverse_proxy /alfresco/service/api/server alfresco:8080 # Alfresco service document
-
+	route {
+		redir / /share/page
+		reverse_proxy /share/* share:8080 # Alfresco web
+		reverse_proxy /alfresco/api/* alfresco:8080 # Alfresco core
+		reverse_proxy /alfresco/service/api/server alfresco:8080 # Alfresco service document
+		respond 404
+	}
 
 	tls kaelan@fouwels.com {
 		protocols tls1.3 tls1.3
@@ -92,7 +93,10 @@ git.fouwels.com {
 		level INFO
 	}
 
-	reverse_proxy /* git:8080
+	route {
+		reverse_proxy /* git:8080
+		respond 404
+	}
 
 	tls kaelan@fouwels.com {
 		protocols tls1.3 tls1.3
