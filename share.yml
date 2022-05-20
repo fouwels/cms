@@ -5,7 +5,7 @@
 services:
   share:
     container_name: share
-    image: alfresco/alfresco-share:7.1.0.1
+    image: alfresco/alfresco-share:7.2.0
     environment:
       JAVA_OPTS: "-Xmx${SHARE_XM}"
       REPO_HOST: alfresco

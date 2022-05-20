@@ -4,7 +4,7 @@
 ---
 services:
   gateway:
-    image: caddy:2.4.6-alpine
+    image: caddy:2.5.1-alpine
     container_name: gateway
     restart: unless-stopped
     ports:
@@ -14,6 +14,8 @@ services:
     configs:
       - source: gateway_config
         target: /etc/caddy/Caddyfile
+      - source: gateway_ca
+        target: /etc/caddy/ca.crt
     networks:
       gateway:
       alfresco:
@@ -30,6 +32,8 @@ volumes:
 configs:
   gateway_config:
     file: ./config/gateway/Caddyfile
+  gateway_ca:
+    file: ./config/gateway/ca.crt
 
 networks:
   gateway:

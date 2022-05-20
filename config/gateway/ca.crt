@@ -1,0 +1,70 @@
+# SPDX-FileCopyrightText: 2022 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            74:80:63:e9:48:37:22:e7:ad:74:4b:8e:74:8e:52:b1:b8:72:ca:6c
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN = 9852630
+        Validity
+            Not Before: Mar 24 19:06:09 2022 GMT
+            Not After : Feb 28 19:06:09 2122 GMT
+        Subject: CN = 9852630
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:c7:08:13:97:fa:59:2b:30:c9:1b:f2:95:63:33:
+                    ba:ea:87:db:e9:57:67:8c:0a:41:3b:91:eb:c4:7d:
+                    2f:ff:3d:50:e2:83:d5:ee:18:63:b3:b9:40:af:92:
+                    9d:7b:54:ab:3c:83:ed:7d:13:68:57:62:27:ce:85:
+                    04:80:8b:57:a8:7e:52:3a:4f:0d:3b:cc:80:6e:f5:
+                    4a:bb:ae:d5:db:5d:49:ef:0d:b9:5f:f2:f1:34:2e:
+                    db:54:07:d7:bd:cd:d5:d2:43:95:aa:3a:a5:9c:87:
+                    84:36:71:d8:dc:5f:60:ad:4b:9e:10:ec:de:f6:0f:
+                    13:e0:0c:33:6b:5c:4d:39:fd:91:a4:11:bf:5b:90:
+                    52:0c:fd:5a:cc:65:21:c8:a5:05:6d:69:33:c7:6a:
+                    f9:ad:ae:39:68:0f:02:6a:b3:06:3d:7f:0f:e6:c8:
+                    03:ef:85:e5:24:c4:db:06:96:9d:45:5b:af:de:fb:
+                    e2:15:6e:32:d3:f0:45:c5:91:4a:5f:12:b8:75:3e:
+                    56:5a:6a:f5:ba:4d:81:33:03:0d:13:d2:6b:13:88:
+                    39:18:2f:34:05:5d:5f:6a:c4:02:13:30:2a:9c:23:
+                    28:4a:69:ea:cf:6b:8e:b7:dc:6b:dc:eb:8e:97:4f:
+                    cd:9d:f0:e6:61:ff:3b:3b:51:a2:a1:0f:58:4f:24:
+                    d9:55
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: sha256WithRSAEncryption
+         79:b3:f0:68:44:13:1f:52:08:95:41:a2:96:24:7f:c8:d2:19:
+         ae:ac:43:c1:cb:19:34:dd:f2:57:aa:61:a5:34:25:a0:72:a8:
+         39:8e:42:6b:be:74:de:d0:a2:b5:70:22:b9:11:9b:63:9c:5a:
+         f0:32:cc:92:be:7c:c3:a5:ac:18:8b:d2:fa:ad:64:34:a5:63:
+         ab:06:1b:a9:94:06:c8:dd:4b:c5:36:a0:91:41:41:1c:e5:2d:
+         5d:63:a1:72:76:7e:90:c1:2a:d4:69:ad:47:cb:72:5f:09:b5:
+         df:86:49:a1:fd:5c:a1:67:00:70:ae:8f:3a:56:df:0d:31:72:
+         a1:cc:1e:78:9d:b2:3a:78:28:68:99:c3:31:4b:19:4c:0a:6b:
+         56:07:57:fd:4e:77:ba:e9:07:36:14:b7:cc:c3:25:08:08:d6:
+         13:55:e3:55:87:f4:71:5a:31:2f:2d:2c:07:61:59:24:d6:19:
+         e8:8f:78:f0:f9:3a:50:b1:4e:0e:dd:c7:f3:df:40:f7:65:4c:
+         8f:6d:00:7a:f1:13:6f:c0:db:af:99:2f:e4:89:78:8c:38:86:
+         2d:36:ad:e7:cc:5a:86:b8:f7:5b:b0:2f:7a:fc:99:83:26:76:
+         48:d9:b4:e0:52:95:06:ae:76:db:48:b7:94:37:63:be:5d:74:
+         94:e5:67:de
+-----BEGIN CERTIFICATE-----
+MIICsjCCAZqgAwIBAgIUdIBj6Ug3IuetdEuOdI5SsbhyymwwDQYJKoZIhvcNAQEL
+BQAwEjEQMA4GA1UEAwwHOTg1MjYzMDAgFw0yMjAzMjQxOTA2MDlaGA8yMTIyMDIy
+ODE5MDYwOVowEjEQMA4GA1UEAwwHOTg1MjYzMDCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBAMcIE5f6WSswyRvylWMzuuqH2+lXZ4wKQTuR68R9L/89UOKD
+1e4YY7O5QK+SnXtUqzyD7X0TaFdiJ86FBICLV6h+UjpPDTvMgG71Sruu1dtdSe8N
+uV/y8TQu21QH173N1dJDlao6pZyHhDZx2NxfYK1LnhDs3vYPE+AMM2tcTTn9kaQR
+v1uQUgz9WsxlIcilBW1pM8dq+a2uOWgPAmqzBj1/D+bIA++F5STE2waWnUVbr977
+4hVuMtPwRcWRSl8SuHU+Vlpq9bpNgTMDDRPSaxOIORgvNAVdX2rEAhMwKpwjKEpp
+6s9rjrfca9zrjpdPzZ3w5mH/OztRoqEPWE8k2VUCAwEAATANBgkqhkiG9w0BAQsF
+AAOCAQEAebPwaEQTH1IIlUGiliR/yNIZrqxDwcsZNN3yV6phpTQloHKoOY5Ca750
+3tCitXAiuRGbY5xa8DLMkr58w6WsGIvS+q1kNKVjqwYbqZQGyN1LxTagkUFBHOUt
+XWOhcnZ+kMEq1GmtR8tyXwm134ZJof1coWcAcK6POlbfDTFyocweeJ2yOngoaJnD
+MUsZTAprVgdX/U53uukHNhS3zMMlCAjWE1XjVYf0cVoxLy0sB2FZJNYZ6I948Pk6
+ULFODt3H899A92VMj20AevETb8Dbr5kv5Il4jDiGLTat58xahrj3W7AvevyZgyZ2
+SNm04FKVBq5220i3lDdjvl10lOVn3g==
+-----END CERTIFICATE-----
