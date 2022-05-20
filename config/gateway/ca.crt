@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2022 Kaelan Thijs Fouwels <kaelan.thijs@fouwels.com>
+#
+# SPDX-License-Identifier: MIT
 Certificate:
     Data:
         Version: 3 (0x2)
