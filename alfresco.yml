@@ -4,7 +4,7 @@
 ---
 services:
   alfresco:
-    image: alfresco/alfresco-content-repository-community:7.1.0.1
+    image: alfresco/alfresco-content-repository-community:7.2.0.1
     container_name: alfresco
     environment:
       JAVA_OPTS: "-Xmx${ALFRESCO_XM}"

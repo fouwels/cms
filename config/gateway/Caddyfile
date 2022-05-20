@@ -60,6 +60,10 @@ cms.fouwels.com {
 		protocols tls1.3 tls1.3
 		curves x25519
 		key_type rsa4096
+		#client_auth {
+		#	mode require_and_verify
+		#	trusted_ca_cert_file /etc/caddy/ca.crt
+		#}
 	}
 }
 

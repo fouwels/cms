@@ -4,7 +4,7 @@
 ---
 services:
   git-postgres:
-    image: postgres:14.1-alpine3.15
+    image: postgres:14.3-alpine3.15
     container_name: git-postgres
     environment:
       POSTGRES_USER: git
