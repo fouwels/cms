@@ -5,7 +5,7 @@
 services:
   solr6:
     container_name: solr6
-    image: alfresco/alfresco-search-services:2.0.3.5
+    image: alfresco/alfresco-search-services:2.0.3
     environment:
       SOLR_ALFRESCO_HOST: alfresco
       SOLR_ALFRESCO_PORT: 8080
